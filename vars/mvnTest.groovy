@@ -1,7 +1,9 @@
-def call(){
-    //sh 'mvn test'
-    withEnv(['MAVEN_OPTS=--add-opens jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED']) {
-    sh 'mvn test'
-}
-
+def call() {
+  
+    withEnv([
+      'MAVEN_OPTS=--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED'
+    ]) {
+      sh 'mvn test'
+    }
+  
 }
