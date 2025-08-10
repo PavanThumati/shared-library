@@ -1,5 +1,7 @@
 def call(){
     //sh 'mvn test'
-    sh 'mvn test --add-opens jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED'
+    withEnv(['MAVEN_OPTS=--add-opens jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED']) {
+    sh 'mvn test'
+}
 
 }
