@@ -8,6 +8,6 @@ def call(String project, String ImageTag, String hubUser){
         echo "$PASS" | docker login -u "$USER" --password-stdin
     '''
     }
-    sh "docker image push ${hubUser}/${project}:${ImageTag}"
-    sh "docker image push ${hubUser}/${project}:latest"   
+    sh "docker image push ${hubUser}/${project}:${ImageTag} || true"
+    sh "docker image push ${hubUser}/${project}:latest || true"   
 }
